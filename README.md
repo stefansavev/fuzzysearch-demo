@@ -12,20 +12,20 @@ git clone https://github.com/stefansavev/fuzzysearch-demo.git
 cd fuzzysearch-demo
 ```
 
-###setup intellij project
+###Setup Intellij Idea Project
 
 ```
 gradle idea
 ```
 
-In Idea:
+In Intellij Idea:
 ```
 File/Open...
 Select the folder fuzzysearch-demo.
 Right click on MnistExample, click Run
 ```
 
-###build
+###Build Project
 
 ```
 gradle clean build
