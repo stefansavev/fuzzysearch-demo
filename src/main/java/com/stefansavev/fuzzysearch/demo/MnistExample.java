@@ -1,6 +1,7 @@
 package com.stefansavev.fuzzysearch.demo;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
@@ -98,12 +99,54 @@ public class MnistExample {
     }
 
     public static void main(String[] args) throws Exception {
-        String inputTextFile = "D:/RandomTreesData-144818512896186816/input/" + "mnist/svdpreprocessed/train.csv";
+        String inputTextFile = "testdata/mnist/preprocessed-train.csv";
         String queriesFile = inputTextFile; //same as training in this example
-        String indexFile = "C:/tmp/output-index/";
+        String indexFile = "testoutput/mnist";
 
         buildIndex(inputTextFile, indexFile);
         //runQueriesFromFile(queriesFile, indexFile);
         runQueriesFromIndex(indexFile);
     }
 }
+
+/*
+Expected Output:
+
+DataFrameView(42000, 100)
+Using SVD on the full data
+Nov 15, 2015 10:58:44 PM com.github.fommil.netlib.BLAS <clinit>
+WARNING: Failed to load implementation from: com.github.fommil.netlib.NativeSystemBLAS
+Nov 15, 2015 10:58:45 PM com.github.fommil.jni.JniLoader liberalLoad
+INFO: successfully loaded D:\Users\stefan\AppData\Local\Temp\jniloader9091513825361286694netlib-native_ref-win-x86_64.dll
+Nov 15, 2015 10:58:46 PM com.github.fommil.netlib.LAPACK <clinit>
+WARNING: Failed to load implementation from: com.github.fommil.netlib.NativeSystemLAPACK
+Nov 15, 2015 10:58:46 PM com.github.fommil.jni.JniLoader load
+INFO: already loaded netlib-native_ref-win-x86_64.dll
+Started transformation with SVD
+Processed 0 rows
+Processed 5000 rows
+Processed 10000 rows
+Processed 15000 rows
+Processed 20000 rows
+Processed 25000 rows
+Processed 30000 rows
+Processed 35000 rows
+Processed 40000 rows
+Finished transformation with SVD
+Time for 'Build tree 0' 318 ms.
+Time for 'Build tree 1' 145 ms.
+Time for 'Build tree 2' 104 ms.
+Time for 'Build tree 3' 83 ms.
+Time for 'Build tree 4' 60 ms.
+Time for 'Build tree 5' 64 ms.
+Time for 'Build tree 6' 59 ms.
+Time for 'Build tree 7' 49 ms.
+Time for 'Build tree 8' 54 ms.
+Time for 'Build tree 9' 52 ms.
+Time for 'Create trees' 4.205 secs.
+Total search time in secs.: 7.36
+Num queries: 42000
+Accuracy estimate: 97.46666666666667
+Time per query in ms.: 0.17523809523809525
+Queries per sec.: 5705.74650183399
+ */

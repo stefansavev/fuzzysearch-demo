@@ -19,3 +19,4 @@ out/
 .gradle/
 build/*
 */build/*
+testoutput/mnist/*
