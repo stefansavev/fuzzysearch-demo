@@ -1,0 +1,32 @@
+apply plugin: 'maven'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven-publish'
+apply plugin: 'java-library-distribution'
+
+repositories {
+    mavenCentral()
+    maven { url "file:/${project.projectDir}/local/repository" }
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.4'
+    compile 'com.github.fommil.netlib:all:1.1.2'
+    compile 'com.googlecode.matrix-toolkits-java:mtj:1.0.1'
+    compile 'com.stefansavev:random-projections-at-berlinbuzzwords:0.1'
+}
+
+distributions {
+    main {
+        contents {
+            into('deploy') {
+                from(jar)
+            }
+        }
+    }
+}
+
+dependencies {
+    testCompile "junit:junit:4.11"
+}
+
