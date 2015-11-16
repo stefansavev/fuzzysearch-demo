@@ -1,30 +1,26 @@
 apply plugin: 'maven'
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'maven-publish'
-apply plugin: 'java-library-distribution'
+apply plugin: 'application'
+
+mainClassName = "com.stefansavev.fuzzysearch.demo.MnistExample"
 
 repositories {
+//    maven { url "file:/${project.projectDir}/local/repository" } //for local repository
+    maven { url "https://jitpack.io" }  //we are using jitpack to make a distribution https://jitpack.io/#stefansavev/random-projections-at-berlinbuzzwords/0.1
     mavenCentral()
-    maven { url "file:/${project.projectDir}/local/repository" }
 }
 
 dependencies {
     compile 'org.scala-lang:scala-library:2.11.4'
     compile 'com.github.fommil.netlib:all:1.1.2'
     compile 'com.googlecode.matrix-toolkits-java:mtj:1.0.1'
-    compile 'com.stefansavev:random-projections-at-berlinbuzzwords:0.1'
+//    compile 'com.stefansavev:random-projections-at-berlinbuzzwords:0.1' //for local repository
+    compile 'com.github.stefansavev:random-projections-at-berlinbuzzwords:0.1'
+
 }
 
-distributions {
-    main {
-        contents {
-            into('deploy') {
-                from(jar)
-            }
-        }
-    }
-}
+
 
 dependencies {
     testCompile "junit:junit:4.11"

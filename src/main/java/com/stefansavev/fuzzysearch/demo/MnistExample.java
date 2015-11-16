@@ -70,19 +70,21 @@ public class MnistExample {
         double agree = 0.0;
         double disagree = 0.0;
         long start = System.currentTimeMillis();
-
+        int i = 0;
         while (itemsIterator.hasNext()) {
             FuzzySearchItem item = itemsIterator.next();
             List<FuzzySearchResult> results = index.getNearestNeighborsByQuery(10, item.getVector());
             if (results.get(0).getLabel() != item.getLabel()){
                 throw new IllegalStateException("The top result should be the query itself");
             }
-            //System.out.println(results.get(1).getCosineSimilarity());
             if (item.getLabel() == results.get(1).getLabel()){
                 agree ++;
             }
             else{
                 disagree ++;
+            }
+            if ((++i) % 5000 == 0){
+                System.out.println("Processed " + i + " queries");
             }
         }
         long end = System.currentTimeMillis();
