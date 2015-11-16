@@ -100,10 +100,14 @@ public class MnistExample {
         System.out.println("Queries per sec.: " + queriesPerSec);
     }
 
+
     public static void main(String[] args) throws Exception {
         String inputTextFile = "testdata/mnist/preprocessed-train.csv";
         String queriesFile = inputTextFile; //same as training in this example
         String indexFile = "testoutput/mnist";
+
+        //create directories if they don't exist
+        (new File(indexFile)).mkdirs();
 
         buildIndex(inputTextFile, indexFile);
         //runQueriesFromFile(queriesFile, indexFile);
