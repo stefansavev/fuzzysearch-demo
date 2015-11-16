@@ -18,13 +18,13 @@ cloning can take a few minutes
 cd fuzzysearch-demo
 ```
 
-###Setup Intellij Idea Project
+###Setup IntelliJ IDEA Project
 
 ```
 gradle idea
 ```
 
-In Intellij Idea:
+In IntelliJ IDEA:
 ```
 File/Open...
 Select the folder fuzzysearch-demo.
