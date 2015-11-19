@@ -1,5 +1,32 @@
-# fuzzysearch-demo
+# fuZzYsearch
+
 Demo of fuzzy (nearest neighbor) search with dense data.
+
+This kind of search applies to:
+
+* words represented as word vectors
+* documents using a dense representation from Latent Dirichlet Allocation (LDA) and SVD
+* images
+* music
+
+
+The demo uses the following library:
+
+https://github.com/stefansavev/random-projections-at-berlinbuzzwords
+
+This library implements a fast and scalable fuzzy search of dense vectors using the cosine similarity
+ between the vectors. The library improves the speed of search upto 10 times compared to the
+obvious brute force approach. With this library it is practical to compute all nearest neighbors
+for all data points for datasets of sizes up to half a million datapoints.
+
+| Dataset name           | Number of data points |  Dimension | Number of Trees Used | Queries per sec. | Queries per. sec. brute force | Recall@10|
+| ---------------------- | --------------------- | -----------| ---------------------| -----------------|-------------------------------|-----------
+| MNIST                  | 42000                 |  100       | 10                   | 1104             | 164                           | 91.5%    |
+| Google Word Vectors    | 70000                 |  200       | 50                   | 528              | 49                            | 91.0%    |
+| Glove Word Vectors     | 400000                |  100       | 150                  | 165              | 18                            | 90.9%    |
+
+90% Recall@10 means that in top 10 results returned by the library we could not find (100 - 90)% = 10%. This is common for search using
+dense vectors. The rest 10% can be found by increasing the number of trees, essentially giving more computational time and memory to the library.
 
 ## Setup
 
