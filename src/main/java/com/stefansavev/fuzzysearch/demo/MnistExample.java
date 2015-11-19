@@ -57,7 +57,7 @@ public class MnistExample {
 
         while ((line = reader.readLine()) != null) {
             FuzzySearchItem item = parseItem(lineNumber, line, dataDimension);
-            List<FuzzySearchResult> results = index.getNearestNeighborsByQuery(10, item.getVector());
+            List<FuzzySearchResult> results = index.search(10, item.getVector());
 
         }
         reader.close();
@@ -73,7 +73,7 @@ public class MnistExample {
         int i = 0;
         while (itemsIterator.hasNext()) {
             FuzzySearchItem item = itemsIterator.next();
-            List<FuzzySearchResult> results = index.getNearestNeighborsByQuery(10, item.getVector());
+            List<FuzzySearchResult> results = index.search(10, item.getVector());
             if (results.get(0).getLabel() != item.getLabel()){
                 throw new IllegalStateException("The top result should be the query itself");
             }
@@ -116,17 +116,15 @@ public class MnistExample {
 }
 
 /*
-Expected Output:
-
 DataFrameView(42000, 100)
 Using SVD on the full data
-Nov 15, 2015 10:58:44 PM com.github.fommil.netlib.BLAS <clinit>
+Nov 19, 2015 4:26:49 PM com.github.fommil.netlib.BLAS <clinit>
 WARNING: Failed to load implementation from: com.github.fommil.netlib.NativeSystemBLAS
-Nov 15, 2015 10:58:45 PM com.github.fommil.jni.JniLoader liberalLoad
-INFO: successfully loaded D:\Users\stefan\AppData\Local\Temp\jniloader9091513825361286694netlib-native_ref-win-x86_64.dll
-Nov 15, 2015 10:58:46 PM com.github.fommil.netlib.LAPACK <clinit>
+Nov 19, 2015 4:26:50 PM com.github.fommil.jni.JniLoader liberalLoad
+INFO: successfully loaded D:\Users\stefan\AppData\Local\Temp\jniloader6582973504082836255netlib-native_ref-win-x86_64.dll
+Nov 19, 2015 4:26:51 PM com.github.fommil.netlib.LAPACK <clinit>
 WARNING: Failed to load implementation from: com.github.fommil.netlib.NativeSystemLAPACK
-Nov 15, 2015 10:58:46 PM com.github.fommil.jni.JniLoader load
+Nov 19, 2015 4:26:51 PM com.github.fommil.jni.JniLoader load
 INFO: already loaded netlib-native_ref-win-x86_64.dll
 Started transformation with SVD
 Processed 0 rows
@@ -139,20 +137,38 @@ Processed 30000 rows
 Processed 35000 rows
 Processed 40000 rows
 Finished transformation with SVD
-Time for 'Build tree 0' 318 ms.
-Time for 'Build tree 1' 145 ms.
-Time for 'Build tree 2' 104 ms.
-Time for 'Build tree 3' 83 ms.
-Time for 'Build tree 4' 60 ms.
-Time for 'Build tree 5' 64 ms.
-Time for 'Build tree 6' 59 ms.
-Time for 'Build tree 7' 49 ms.
-Time for 'Build tree 8' 54 ms.
-Time for 'Build tree 9' 52 ms.
-Time for 'Create trees' 4.205 secs.
-Total search time in secs.: 7.36
+#storage of tree: 0.010564804077148438 MB
+Time for 'Build tree 0' 291 ms.
+#storage of tree: 0.010519027709960938 MB
+Time for 'Build tree 1' 114 ms.
+#storage of tree: 0.010385513305664062 MB
+Time for 'Build tree 2' 93 ms.
+#storage of tree: 0.010196685791015625 MB
+Time for 'Build tree 3' 84 ms.
+#storage of tree: 0.010316848754882812 MB
+Time for 'Build tree 4' 72 ms.
+#storage of tree: 0.010370254516601562 MB
+Time for 'Build tree 5' 65 ms.
+#storage of tree: 0.010564804077148438 MB
+Time for 'Build tree 6' 65 ms.
+#storage of tree: 0.010625839233398438 MB
+Time for 'Build tree 7' 65 ms.
+#storage of tree: 0.010572433471679688 MB
+Time for 'Build tree 8' 68 ms.
+#storage of tree: 0.009939193725585938 MB
+Time for 'Build tree 9' 59 ms.
+Time for 'Create trees' 5.347 secs.
+Processed 5000 queries
+Processed 10000 queries
+Processed 15000 queries
+Processed 20000 queries
+Processed 25000 queries
+Processed 30000 queries
+Processed 35000 queries
+Processed 40000 queries
+Total search time in secs.: 19.482
 Num queries: 42000
-Accuracy estimate: 97.46666666666667
-Time per query in ms.: 0.17523809523809525
-Queries per sec.: 5705.74650183399
+Accuracy estimate: 97.51904761904763
+Time per query in ms.: 0.46385714285714286
+Queries per sec.: 2155.725504285788
  */
