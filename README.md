@@ -2,12 +2,14 @@
 
 Demo of fuzzy (nearest neighbor) search with dense data.
 
-This kind of search applies to:
+This tool can be used to:
 
-* words represented as word vectors
-* documents using a dense representation from Latent Dirichlet Allocation (LDA) and SVD
-* images
-* music
+* search words represented as word vectors
+* search documents using a dense representation from Latent Dirichlet Allocation (LDA) and SVD
+* build an image search engine
+* build a music search engine
+* build a recommendation system
+* search representations of deep neural networks
 
 
 The demo uses the following library:
