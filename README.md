@@ -16,7 +16,7 @@ The demo uses the following library:
 
 https://github.com/stefansavev/random-projections-at-berlinbuzzwords
 
-This library implements a fast and scalable fuzzy search of dense vectors using the cosine similarity
+This library implements a fast and scalable fuzzy search of dense vectors (as opposed to exact search of sparse vectors) using the cosine similarity
  between the vectors. The library improves the speed of search up to 10 times compared to the
 obvious brute force approach. With this library it is practical to compute all nearest neighbors
 for all data points in datasets of sizes up to half a million data points.
@@ -37,9 +37,12 @@ dense vectors. The remaining 10% can be found by increasing the number of trees,
 ```java
 int dataDimension = 100;
 int numTrees = 10;
-//create an indexer
-FuzzySearchIndexBuilder indexBuilder = new FuzzySearchIndexBuilder(dataDimension, FuzzySearchEngines.fastTrees(numTrees));
 
+//create an indexer
+FuzzySearchIndexBuilder indexBuilder =
+    new FuzzySearchIndexBuilder(dataDimension, FuzzySearchEngines.fastTrees(numTrees));
+
+//add sample data
 String key = "key";
 int label = 8; //class/label in machine learning
 double[] vector = ...; //a double array of dimension specified above
@@ -56,15 +59,17 @@ index.save(outputIndexFile);
 ###Queries (Search)
 
 ```java
+//load the index
 FuzzySearchIndex index = FuzzySearchIndex.open(indexFile);
 
+//specify a query
 double[] query = ...; //the query is a vector of dimension specified during indexing
+//retrieve the results (data point names and similarity scores)
 List<FuzzySearchResult> results = index.search(10, query); //return top 10 results
 FuzzySearchResult topResult = results.get(0);
 String topResultName = topResult.getName();
 double topResultSimilarity = topResult.getCosineSimilarity();
 ```
-
 
 ## Setup
 
