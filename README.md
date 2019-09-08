@@ -30,9 +30,9 @@ for all data points in datasets of sizes up to half a million data points.
 90% Recall@10 means that in top 10 results returned by the library we could not find (100 - 90)% = 10%. This is common for search using
 dense vectors. The remaining 10% can be found by increasing the number of trees, essentially giving more computational time and memory to the library.
 
-##API
+## API
 
-###Indexing (in batch mode)
+### Indexing (in batch mode)
 
 ```java
 int dataDimension = 100;
@@ -56,7 +56,7 @@ FuzzySearchIndex index = indexBuilder.build();
 index.save(outputIndexFile);
 ```
 
-###Queries (Search)
+### Queries (Search)
 
 ```java
 //load the index
@@ -88,7 +88,7 @@ cloning can take a few minutes
 cd fuzzysearch-demo
 ```
 
-###Setup IntelliJ IDEA Project
+### Setup IntelliJ IDEA Project
 
 ```
 gradle idea
@@ -101,19 +101,19 @@ Select the folder fuzzysearch-demo.
 Right click on MnistExample, click Run
 ```
 
-###Build Project
+### Build Project
 
 ```
 gradle clean build
 ```
 
-###Run Project
+### Run Project
 
 ```
 gradle run
 ```
 
-###Expected output
+### Expected output
 
 You should see
 
