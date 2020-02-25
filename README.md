@@ -1,6 +1,4 @@
-# fuZzYsearch
-
-Demo of fuzzy (nearest neighbor) search with dense data.
+# Demo of Nearest Neighbor Search using the Random Projections method
 
 This tool can be used to:
 
